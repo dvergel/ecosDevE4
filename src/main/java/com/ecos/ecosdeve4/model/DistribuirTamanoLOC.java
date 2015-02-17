@@ -6,7 +6,9 @@ package com.ecos.ecosdeve4.model;
 
 import com.ecos.ecosdeve4.controller.exceptions.ExceptionApp;
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -37,6 +39,7 @@ public class DistribuirTamanoLOC extends CalcularMediaDesviacion {
         clases.add("Char");
         clases.add("Character");
         clases.add("Converter");
+        loc.add(new BigDecimal(18));
         loc.add(new BigDecimal(18));
         loc.add(new BigDecimal(25));
         loc.add(new BigDecimal(31));
@@ -97,8 +100,8 @@ public class DistribuirTamanoLOC extends CalcularMediaDesviacion {
     }
 
     public void carlcularMediaDesviacionLnX(List<BigDecimal> loc,List<BigDecimal> metodos) throws Exception {
-        for (int x = 0; x < getLoc().size(); x++) {
-            getList().add(new BigDecimal(Math.log10(loc.get(x).divide(metodos.get(x)).doubleValue())));
+        for (int x = 0; x < loc.size(); x++) {
+            getList().add(new BigDecimal(Math.log(loc.get(x).divide(metodos.get(x), MathContext.DECIMAL64).doubleValue())));
         }
         try {
             calcularMedia();
@@ -109,8 +112,8 @@ public class DistribuirTamanoLOC extends CalcularMediaDesviacion {
     }
     
     public void carlcularMediaDesviacionLnX(List<BigDecimal> pag) throws Exception {
-        for (int x = 0; x < getLoc().size(); x++) {
-            getList().add(new BigDecimal(Math.log10(loc.get(x).doubleValue())));
+        for (int x = 0; x < pag.size(); x++) {
+            getList().add(new BigDecimal(Math.log(pag.get(x).doubleValue())));
         }
         try {
             calcularMedia();
@@ -120,8 +123,9 @@ public class DistribuirTamanoLOC extends CalcularMediaDesviacion {
         }
     }
     
-    public void calcularTamañosLoc()throws Exception{
-        carlcularMediaDesviacionLnX(getLoc(),getLocXmetodos());
+    public void calcularTamanosLoc()throws Exception{
+        setList(new LinkedList<BigDecimal>());
+        carlcularMediaDesviacionLnX(getLoc(),getNumeroMetodos());
         BigDecimal lnT=getMedia().subtract(getDesviacion().multiply(new BigDecimal(2)));
         locXmetodos.add(new BigDecimal(Math.exp(lnT.doubleValue())));
         lnT=getMedia().subtract(getDesviacion());
@@ -132,6 +136,7 @@ public class DistribuirTamanoLOC extends CalcularMediaDesviacion {
         locXmetodos.add(new BigDecimal(Math.exp(lnT.doubleValue())));
         lnT=getMedia().add(getDesviacion().multiply(new BigDecimal(2)));
         locXmetodos.add(new BigDecimal(Math.exp(lnT.doubleValue())));
+        setList(new LinkedList<BigDecimal>());
         carlcularMediaDesviacionLnX(getPaginas());
         lnT=getMedia().subtract(getDesviacion().multiply(new BigDecimal(2)));
         paginasXcapitulo.add(new BigDecimal(Math.exp(lnT.doubleValue())));
