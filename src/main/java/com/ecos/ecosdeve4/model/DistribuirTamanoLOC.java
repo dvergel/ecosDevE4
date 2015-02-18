@@ -4,7 +4,7 @@
  */
 package com.ecos.ecosdeve4.model;
 
-import com.ecos.ecosdeve4.controller.exceptions.ExceptionApp;
+import com.ecos.ecosdeve4.exceptions.ExceptionApp;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.ArrayList;
