@@ -15,9 +15,6 @@ import java.util.LinkedList;
  * esta clase calcula y almacena los valores relacionados con el calculo de la
  * media y desviacion estandar
  * 
- * @param LinkedList<BigDecimal> list    : lista de datos para el calculo de la media y desviacion estandar
- * @param BigDecimal media               : almacena el valor de la media de la lista enlazada
- * @param BigDecimal desviacion          : almacena el valor de la desviacion estandar de la lista enlazada
  * @author Dev
  */
 public class CalcularMediaDesviacion {
@@ -99,10 +96,18 @@ public class CalcularMediaDesviacion {
         this.list = list;
     }
 
+    /**
+     *
+     * @return
+     */
     public BigDecimal getMedia() {
         return media;
     }
 
+    /**
+     *
+     * @param media
+     */
     public void setMedia(BigDecimal media) {
         this.media = media;
     }
@@ -115,6 +120,10 @@ public class CalcularMediaDesviacion {
         return desviacion;
     }
 
+    /**
+     *
+     * @param desviacion
+     */
     public void setDesviacion(BigDecimal desviacion) {
         this.desviacion = desviacion;
     }

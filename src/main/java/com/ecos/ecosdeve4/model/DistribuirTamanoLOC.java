@@ -12,7 +12,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- *
+ * clase DistribuirTamanoLOC
+ * 
+ * calcula la distribucion de tabaño de LOC heredando operaciones matematicas de la clase CalcularMediaDesviacion
+ * 
  * @author Dev
  */
 public class DistribuirTamanoLOC extends CalcularMediaDesviacion {
@@ -25,6 +28,12 @@ public class DistribuirTamanoLOC extends CalcularMediaDesviacion {
     private List<BigDecimal> locXmetodos = new ArrayList<BigDecimal>();
     private List<BigDecimal> paginasXcapitulo = new ArrayList<BigDecimal>();
 
+    /**
+     * metodo DistribuirTamanoLOC
+     * 
+     * constructor de la clase con inicializacion de datos de prueba para la ejecucion de distribucion de tamaño de LOC
+     * 
+     */
     public DistribuirTamanoLOC() {
         clases.add("each_char");
         clases.add("string_read");
@@ -99,6 +108,15 @@ public class DistribuirTamanoLOC extends CalcularMediaDesviacion {
         paginas.add(new BigDecimal(12));
     }
 
+    /**
+     * metodo carlcularMediaDesviacionLnX
+     * 
+     * asigna valor a el atributo list de la clase heredada CalcularMediaDesviacion añadiendo le la variacion de realizar el logaritmo en base 10 de la divicion de los parametros enviados loc y metodos
+     * 
+     * @param loc : lista de numero de lineas de codigo
+     * @param metodos :lista numero de metodos
+     * @throws Exception
+     */
     public void carlcularMediaDesviacionLnX(List<BigDecimal> loc,List<BigDecimal> metodos) throws Exception {
         for (int x = 0; x < loc.size(); x++) {
             getList().add(new BigDecimal(Math.log(loc.get(x).divide(metodos.get(x), MathContext.DECIMAL64).doubleValue())));
@@ -111,6 +129,14 @@ public class DistribuirTamanoLOC extends CalcularMediaDesviacion {
         }
     }
     
+    /**
+     * metodo carlcularMediaDesviacionLnX
+     * 
+     * asigna valor a el atributo list de la clase heredada CalcularMediaDesviacion añadiendo le la variacion de realizar el logaritmo en base 10 del numero de paginas
+     * 
+     * @param pag : lista de numero de paginas
+     * @throws Exception
+     */
     public void carlcularMediaDesviacionLnX(List<BigDecimal> pag) throws Exception {
         for (int x = 0; x < pag.size(); x++) {
             getList().add(new BigDecimal(Math.log(pag.get(x).doubleValue())));
@@ -123,6 +149,13 @@ public class DistribuirTamanoLOC extends CalcularMediaDesviacion {
         }
     }
     
+    /**
+     * metodo calcularTamanosLoc
+     * 
+     * realiza las operaciones para calcular la distribucion de tamaño de LOC para la prueba propuesta
+     * 
+     * @throws Exception
+     */
     public void calcularTamanosLoc()throws Exception{
         setList(new LinkedList<BigDecimal>());
         carlcularMediaDesviacionLnX(getLoc(),getNumeroMetodos());
@@ -150,58 +183,114 @@ public class DistribuirTamanoLOC extends CalcularMediaDesviacion {
         paginasXcapitulo.add(new BigDecimal(Math.exp(lnT.doubleValue())));
     }
 
+    /**
+     *
+     * @return
+     */
     public List<BigDecimal> getLocXmetodos() {
         return locXmetodos;
     }
 
+    /**
+     *
+     * @param locXmetodos
+     */
     public void setLocXmetodos(List<BigDecimal> locXmetodos) {
         this.locXmetodos = locXmetodos;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<String> getClases() {
         return clases;
     }
 
+    /**
+     *
+     * @param clases
+     */
     public void setClases(List<String> clases) {
         this.clases = clases;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<BigDecimal> getLoc() {
         return loc;
     }
 
+    /**
+     *
+     * @param loc
+     */
     public void setLoc(List<BigDecimal> loc) {
         this.loc = loc;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<BigDecimal> getNumeroMetodos() {
         return numeroMetodos;
     }
 
+    /**
+     *
+     * @param numeroMetodos
+     */
     public void setNumeroMetodos(List<BigDecimal> numeroMetodos) {
         this.numeroMetodos = numeroMetodos;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<String> getCapitulos() {
         return capitulos;
     }
 
+    /**
+     *
+     * @param capitulos
+     */
     public void setCapitulos(List<String> capitulos) {
         this.capitulos = capitulos;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<BigDecimal> getPaginas() {
         return paginas;
     }
 
+    /**
+     *
+     * @param paginas
+     */
     public void setPaginas(List<BigDecimal> paginas) {
         this.paginas = paginas;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<BigDecimal> getPaginasXcapitulo() {
         return paginasXcapitulo;
     }
 
+    /**
+     *
+     * @param paginasXcapitulo
+     */
     public void setPaginasXcapitulo(List<BigDecimal> paginasXcapitulo) {
         this.paginasXcapitulo = paginasXcapitulo;
     }

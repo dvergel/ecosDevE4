@@ -12,11 +12,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * clase MainView
+ * 
+ * modela la capa de presentacion e interaciones con los usuarios
+ * 
  * @author Dev
+ * @version 1.0
+ * @since 1.0
  */
 public class MainView {
 
+    /**
+     * metodo showHome
+     * 
+     * devuelve la respuesta a la peticion http con la vista inicial de la aplicacion
+     * 
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     public static void showHome(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
@@ -162,6 +177,17 @@ public class MainView {
         }
     }
 
+    /**
+     * metodo error
+     * 
+     * administra los posibles mensajes de excepcion controlados en la aplicacion
+     * 
+     * @param req
+     * @param resp
+     * @param ex
+     * @throws ServletException
+     * @throws IOException
+     */
     public static void error(HttpServletRequest req, HttpServletResponse resp, Exception ex)
             throws ServletException, IOException {
         resp.getWriter().println("Error!!! :" + ex.getMessage());

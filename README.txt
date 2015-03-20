@@ -1,7 +1,7 @@
 ‘Mi primer proyecto’
 git URL: https://github.com/dvergel/ecosDevE4.git
 Proyect : ecosDevE4
-Heroku Deploy : https://ecosdeve4.herokuapp.com/
+Heroku Deploy : https://ecosdev4.herokuapp.com/
 
 Instrucciones
 

@@ -13,17 +13,42 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
 /**
- * Hello world!
- *
+ * clase App
+ * 
+ * modela el controlador de peticiones de la aplicacion web
+ * 
+ * @author Dev
+ * @version 1.0
+ * @since 1.0
  */
+
 public class App extends HttpServlet {
 
+    /**
+     * metodo doGet
+     * 
+     * controla las peticiones realizadas por el metodo get
+     * 
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         MainView.showHome(req, resp);
     }
 
+    /**
+     * metodo doPost
+     * 
+     * controla las peticiones por el metodo Post
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -35,9 +60,17 @@ public class App extends HttpServlet {
         }
     }
 
+    /**
+     * metodo main
+     * 
+     * configura el controlador embebido del servidor de aplicacion jetty
+     * 
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
-        Server server = new Server(Integer.valueOf(System.getenv("PORT")));
-        //Server server = new Server(80);
+        //Server server = new Server(Integer.valueOf(System.getenv("PORT")));
+        Server server = new Server(80);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         server.setHandler(context);
